@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext} from 'react';
 import {
   Image,
   Pressable,
@@ -11,10 +11,8 @@ import {OrchidModel} from '../model/orchid.model';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {FlatList} from 'react-native-gesture-handler';
 import {AppColor} from '../constants/colors';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import {useIsFocused, useNavigation} from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import {Routes} from '../navigation/Navigation';
-import {usePersistedStore} from '../utils/usePersistedStore';
 import {favoriteContext} from '../utils/FavoriteContextWrapper';
 
 interface ListItemProps {

@@ -1,13 +1,11 @@
 import React, {useMemo, useState} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
-import Icon from 'react-native-ionicons';
 import {AppColor} from '../../constants/colors';
 import ListOrchids from '../../components/ListItem';
 import {orchidsMock} from '../../mock/orchids';
 import ListCategories from '../../components/ListCategories';
 import {categoriesMock} from '../../mock/categories';
-import FavoriteContextWrapper from '../../utils/FavoriteContextWrapper';
 
 const Home = ({}) => {
   const [chosenCat, setChosenCat] = useState(0);

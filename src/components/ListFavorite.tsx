@@ -61,7 +61,7 @@ const ListFavorite = ({data, removeDataFromStorage}: ListFavoriteProps) => {
     //   renderItem={({item}) => renderSingleItem(item)}
     //   scrollEnabled={false}
     // />
-    <View style={{height: '100%'}}>
+    <View style={{height: '100%', flex: 1}}>
       <Carousel
         vertical
         width={width}

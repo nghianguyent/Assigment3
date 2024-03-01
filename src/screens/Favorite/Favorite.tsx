@@ -1,21 +1,14 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import {useIsFocused} from '@react-navigation/native';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import React, {useContext, useEffect, useMemo, useState} from 'react';
+import React, {useContext, useMemo} from 'react';
 import {
   Alert,
-  Image,
+  Dimensions,
   ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
 } from 'react-native';
-import ListItem from '../../components/ListItem';
-import {usePersistedStore} from '../../utils/usePersistedStore';
-import {OrchidModel} from '../../model/orchid.model';
 import {orchidsMock} from '../../mock/orchids';
-import {Home} from '..';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import {AppColor} from '../../constants/colors';
@@ -102,6 +95,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: AppColor.bg,
     display: 'flex',
+    height: Dimensions.get('window').height,
   },
   emptyContainer: {
     flex: 1,

@@ -1,13 +1,5 @@
 import React from 'react';
-import {
-  Dimensions,
-  FlatList,
-  Image,
-  Pressable,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import {FlatList, Image, Pressable, StyleSheet, Text, View} from 'react-native';
 import {CategoryModel} from '../model/category.model';
 import {AppColor} from '../constants/colors';
 import Icon from 'react-native-vector-icons/Ionicons';

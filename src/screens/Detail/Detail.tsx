@@ -1,8 +1,6 @@
 import {
   Animated,
-  Button,
   Dimensions,
-  FlatList,
   Image,
   Pressable,
   StyleSheet,
@@ -31,7 +29,6 @@ export default function Detail({navigation, route}: Readonly<DetailParamList>) {
     useContext(favoriteContext);
 
   const orchidId = route.params?.id;
-
   const chosenOrchid = useMemo(() => {
     return orchidsMock.find(item => item.id === orchidId);
   }, [favoriteList]);
@@ -59,7 +56,7 @@ export default function Detail({navigation, route}: Readonly<DetailParamList>) {
   };
 
   const goBackFunction = () => {
-    navigation.navigate(Routes.Home);
+    navigation.pop();
   };
 
   return (

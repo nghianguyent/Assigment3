@@ -1,11 +1,7 @@
-import {NavigationContainer} from '@react-navigation/native';
-import {
-  NativeStackScreenProps,
-  createNativeStackNavigator,
-} from '@react-navigation/native-stack';
+import {NavigationContainer, TabRouter} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
 import {Detail, Favorite, Home} from '../screens';
-import {createDrawerNavigator} from '@react-navigation/drawer';
 import IconCus from '../components/IconCus';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {AppColor} from '../constants/colors';
@@ -15,6 +11,8 @@ export enum Routes {
   Favorite = 'Favorite',
   Detail = 'Detail',
   TabHome = 'TabHome',
+  TabFavorite = 'TabFavorite',
+  StackHome = 'StackHome',
 }
 
 export type RootStackParamList = {
@@ -22,12 +20,46 @@ export type RootStackParamList = {
   [Routes.Favorite]: undefined;
   [Routes.Detail]: {id: number};
   [Routes.TabHome]: undefined;
+  [Routes.TabFavorite]: undefined;
+  [Routes.StackHome]: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
-const Drawer = createDrawerNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator<RootStackParamList>();
 
+function HomeStackScreen() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name={Routes.Home}
+        component={Home}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name={Routes.Detail}
+        component={Detail}
+        initialParams={{id: 1}}
+      />
+    </Stack.Navigator>
+  );
+}
+
+function FavoriteStackScreen() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name={Routes.Favorite}
+        component={Favorite}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name={Routes.Detail}
+        component={Detail}
+        initialParams={{id: 1}}
+      />
+    </Stack.Navigator>
+  );
+}
 function BottomTabNavigators() {
   return (
     <Tab.Navigator
@@ -38,8 +70,8 @@ function BottomTabNavigators() {
         },
       }}>
       <Tab.Screen
-        name={Routes.Home}
-        component={Home}
+        name={Routes.TabHome}
+        component={HomeStackScreen}
         options={{
           tabBarShowLabel: false,
           tabBarIcon: ({color, focused}) =>
@@ -48,8 +80,8 @@ function BottomTabNavigators() {
         }}
       />
       <Tab.Screen
-        name={Routes.Favorite}
-        component={Favorite}
+        name={Routes.TabFavorite}
+        component={FavoriteStackScreen}
         options={{
           tabBarShowLabel: false,
           tabBarIcon: ({color, focused}) =>
@@ -61,41 +93,6 @@ function BottomTabNavigators() {
   );
 }
 
-const DrawerNavigator = () => {
-  return (
-    <Drawer.Navigator>
-      <Drawer.Screen
-        name={Routes.TabHome}
-        component={BottomTabNavigators}
-        options={{
-          title: 'Home',
-          drawerIcon: ({color, focused}) =>
-            IconCus({color: AppColor.primary, focused, name: 'home'}),
-          drawerActiveTintColor: AppColor.primary,
-          drawerInactiveTintColor: AppColor.neutral2,
-          drawerActiveBackgroundColor: AppColor.bg,
-        }}
-      />
-      <Drawer.Screen
-        name={Routes.Favorite}
-        component={Favorite}
-        options={{
-          title: 'My Favorites',
-          drawerIcon: ({color, focused}) =>
-            IconCus({
-              color: focused ? AppColor.primary : AppColor.neutral2,
-              focused,
-              name: 'heart',
-            }),
-          drawerActiveBackgroundColor: AppColor.bg,
-          drawerInactiveTintColor: AppColor.neutral2,
-          drawerActiveTintColor: AppColor.primary,
-        }}
-      />
-    </Drawer.Navigator>
-  );
-};
-
 export const Navigation = () => {
   return (
     <NavigationContainer>
@@ -105,11 +102,11 @@ export const Navigation = () => {
           component={BottomTabNavigators}
           options={{headerShown: false}}
         />
-        <Stack.Screen
+        {/* <Stack.Screen
           name={Routes.Detail}
           component={Detail}
           initialParams={{id: 1}}
-        />
+        /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );
