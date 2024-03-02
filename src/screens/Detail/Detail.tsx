@@ -16,6 +16,7 @@ import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList, Routes} from '../../navigation/Navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {AppColor} from '../../constants/colors';
+import {categoriesMock} from '../../mock/categories';
 
 export type DetailParamList = NativeStackScreenProps<
   RootStackParamList,
@@ -92,6 +93,14 @@ export default function Detail({navigation, route}: Readonly<DetailParamList>) {
               </Animated.View>
             </TouchableWithoutFeedback>
           </View>
+          <View style={styles.section0}>
+            <Text style={styles.title}>
+              Category:{' '}
+              <Text style={styles.priceText}>
+                {categoriesMock[chosenOrchid?.categoryId ?? 0]?.name}
+              </Text>
+            </Text>
+          </View>
           <View style={styles.section1}>
             <Text style={styles.title}>
               Price:
@@ -146,7 +155,6 @@ const styles = StyleSheet.create({
   },
   header: {
     marginTop: 30,
-    marginBottom: 15,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -154,7 +162,7 @@ const styles = StyleSheet.create({
   headerText: {
     width: '80%',
     marginLeft: 10,
-    fontSize: 38,
+    fontSize: 32,
     color: AppColor.primary,
     fontWeight: '600',
   },
@@ -169,22 +177,20 @@ const styles = StyleSheet.create({
   section1: {padding: 10, marginBottom: 10},
   title: {
     color: AppColor.blue,
-    fontSize: 24,
+    fontSize: 22,
     fontWeight: '600',
-    marginBottom: 12,
   },
   contentText: {
     fontSize: 15,
     color: AppColor.onPrimary,
   },
+  section0: {
+    padding: 10,
+  },
   section2: {
     backgroundColor: AppColor.primary,
     padding: 20,
     borderRadius: 25,
-    marginBottom: 15,
-  },
-  section3: {
-    padding: 20,
   },
   list: {
     paddingVertical: 15,

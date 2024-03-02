@@ -98,7 +98,7 @@ export const Navigation = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name={Routes.TabHome}
+          name={Routes.StackHome}
           component={BottomTabNavigators}
           options={{headerShown: false}}
         />

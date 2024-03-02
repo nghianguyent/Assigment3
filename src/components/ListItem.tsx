@@ -88,7 +88,8 @@ const ListOrchids = ({data}: ListItemProps) => {
         style={styles.emptyImage}
         source={{uri: 'https://i.imgur.com/6I2R0wL.png'}}
       />
-      <Text style={styles.emptyText}>Preparing to update new Fruit</Text>
+      <Icon name="tools" size={40} color={AppColor.primary} />
+      <Text style={styles.emptyText}>Preparing to update new orchids</Text>
     </View>
   );
 };
@@ -96,7 +97,7 @@ const ListOrchids = ({data}: ListItemProps) => {
 const styles = StyleSheet.create({
   rootContainer: {
     height: 180,
-    marginBottom: 45,
+    marginBottom: 20,
     marginHorizontal: 30,
     borderRadius: 30,
     shadowColor: 'rgba(0, 0, 0, 0.6)',
@@ -156,6 +157,7 @@ const styles = StyleSheet.create({
   },
   emptyText: {
     color: AppColor.blue,
+    marginTop: 20,
     fontSize: 20,
     fontFamily: 'Chalkboard SE',
   },

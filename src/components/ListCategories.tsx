@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     shadowOffset: {width: 0, height: 4},
     shadowOpacity: 0.6,
     shadowRadius: 4,
-    padding: 15,
+    padding: 10,
   },
   listContainer: {display: 'flex', justifyContent: 'center'},
   innerContainer: {

@@ -27,23 +27,19 @@ const Favorite = () => {
   }, [JSON.stringify(favoriteList)]);
 
   const removeAllStorage = () => {
-    Alert.alert(
-      'Are you sure?',
-      'Bạn chắc chắc muốn xóa hết mục yêu thích của mình chứ ?',
-      [
-        {
-          text: 'No',
-          onPress: () => {},
-          style: 'destructive',
+    Alert.alert('Are you sure?', 'Do you want to remove all favorites?', [
+      {
+        text: 'No',
+        onPress: () => {},
+        style: 'destructive',
+      },
+      {
+        text: 'Yes',
+        onPress: () => {
+          clear();
         },
-        {
-          text: 'Yes',
-          onPress: () => {
-            clear();
-          },
-        },
-      ],
-    );
+      },
+    ]);
   };
 
   return (
@@ -79,7 +75,7 @@ const Favorite = () => {
         </>
       ) : (
         <View style={styles.emptyContainer}>
-          <Icon name="trash-bin-outline" size={100} color={AppColor.primary} />
+          <Icon name="trash-bin-outline" size={60} color={AppColor.primary} />
 
           <Text style={styles.emptyText}>
             Find an orchid and add it to your favorites
@@ -95,7 +91,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: AppColor.bg,
     display: 'flex',
-    height: Dimensions.get('window').height,
+    height: Dimensions.get('screen').height,
   },
   emptyContainer: {
     flex: 1,
@@ -105,7 +101,7 @@ const styles = StyleSheet.create({
   },
   emptyText: {
     color: AppColor.primary,
-    fontSize: 20,
+    fontSize: 18,
     padding: 20,
     textAlign: 'center',
     fontFamily: 'sans-serif',
